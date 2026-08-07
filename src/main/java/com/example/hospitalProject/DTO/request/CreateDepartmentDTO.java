@@ -1,8 +1,13 @@
 package com.example.hospitalProject.DTO.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class CreateDepartmentDTO {
+    @NotBlank(message = "Tên khoa không được để trống")
     private String departmentName;
+    @NotBlank(message = "Số điện thoại không được để trống")
     private String phone;
+    @NotBlank(message = "Mô tả không được để trống")
     private String description;
 
     public CreateDepartmentDTO() {

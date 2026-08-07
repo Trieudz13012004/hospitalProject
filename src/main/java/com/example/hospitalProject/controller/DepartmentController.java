@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/departments")
 public class DepartmentController {
@@ -36,7 +36,7 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public ResponseEntity<DepartmentResponseDTO> createDepartment(@RequestBody CreateDepartmentDTO dto) {
+    public ResponseEntity<DepartmentResponseDTO> createDepartment(@Valid @RequestBody CreateDepartmentDTO dto) {
         DepartmentResponseDTO department = departmentService.createDepartment(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(department);
     }

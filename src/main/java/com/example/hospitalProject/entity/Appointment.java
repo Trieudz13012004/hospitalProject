@@ -2,7 +2,9 @@ package com.example.hospitalProject.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "appointments")
@@ -13,10 +15,10 @@ public class Appointment {
     private int id;
 
     @Column(name = "appointment_date", nullable = false)
-    private LocalDateTime appointmentDate;
+    private LocalDate appointmentDate;
 
     @Column(name = "appointment_time", nullable = false)
-    private LocalDateTime appointmentTime;
+    private LocalTime appointmentTime;
 
     @Column(name = "reason")
     private String reason;
@@ -49,7 +51,7 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(LocalDateTime appointmentDate, LocalDateTime appointmentTime, String reason, String diagnosis, String status, LocalDateTime createdAt, Patient patient, Doctor doctor, Room room, Invoice invoice) {
+    public Appointment(LocalDate appointmentDate, LocalTime appointmentTime, String reason, String diagnosis, String status, LocalDateTime createdAt, Patient patient, Doctor doctor, Room room, Invoice invoice) {
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
         this.reason = reason;
@@ -70,19 +72,19 @@ public class Appointment {
         this.id = id;
     }
 
-    public LocalDateTime getAppointmentDate() {
+    public LocalDate getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(LocalDateTime appointmentDate) {
+    public void setAppointmentDate(LocalDate appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 
-    public LocalDateTime getAppointmentTime() {
+    public LocalTime getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setAppointmentTime(LocalDateTime appointmentTime) {
+    public void setAppointmentTime(LocalTime appointmentTime) {
         this.appointmentTime = appointmentTime;
     }
 
