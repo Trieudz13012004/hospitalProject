@@ -7,22 +7,22 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CreateAppointmentDTO {
-    @NotNull
+    @NotNull(message = "Mã bênh nhân không được để trống")
     private Integer patientId;
 
-    @NotNull
+    @NotNull(message = "Mã bác sĩ không được để trống")
     private Integer doctorId;
 
-    @NotNull
+    @NotNull(message = "Mã phòng khám không được để trống")
     private Integer roomId;
 
-    @NotNull
+    @NotNull(message = "Ngày khám không được để trống")
     private LocalDate appointmentDate;
 
-    @NotNull
+    @NotNull(message = "Giờ khám không được để trống")
     private LocalTime appointmentTime;
 
-    @NotBlank
+    @NotBlank(message = "Lý do khám không được để trống")
     private String reason;
 
     public CreateAppointmentDTO() {

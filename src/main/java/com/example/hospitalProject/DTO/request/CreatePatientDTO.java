@@ -1,13 +1,21 @@
 package com.example.hospitalProject.DTO.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDateTime;
 
 public class CreatePatientDTO {
+    @NotBlank(message = "Tên bệnh nhân không được để trống")
     private String fullName;
+    @NotBlank(message = "Ngày sinh không được để trống")
     private LocalDateTime dateOfBirth;
+    @NotBlank(message = "Giới tính không được để trống")
     private String gender;
+    @NotBlank(message = "Số điện thoại không được để trống")
     private String phone;
+    @NotBlank(message = "Email không được để trống")
     private String email;
+    @NotBlank(message = "Địa chỉ không được để trống")
     private String address;
 
     public CreatePatientDTO() {
