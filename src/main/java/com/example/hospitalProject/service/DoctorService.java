@@ -11,10 +11,12 @@ import com.example.hospitalProject.repository.AppointmentRepo;
 import com.example.hospitalProject.repository.DepartmentRepo;
 import com.example.hospitalProject.repository.DoctorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -214,5 +216,41 @@ public class DoctorService {
             doctorResponseDTOs.add(dto);
         }
         return doctorResponseDTOs;
+    }
+
+    // [Dễ + Trung bình]
+    public Page<DoctorResponseDTO> getAllDoctorsPage(Pageable pageable) {
+        Page<Doctor> doctors = doctorRepo.findAll(pageable);
+        return doctors.map(this::convertToDTO);
+    }
+
+    // [Thử thách]
+    public Page<DoctorResponseDTO> getDoctorsBySpecialization(
+            String specialization,
+            Pageable pageable
+    ) {
+        Page<Doctor> doctors = doctorRepo.findBySpecialization(
+                specialization,
+                pageable
+        );
+
+        return doctors.map(this::convertToDTO);
+    }
+
+    private DoctorResponseDTO convertToDTO(Doctor doctor) {
+        DoctorResponseDTO dto = new DoctorResponseDTO();
+
+        dto.setDoctorId(doctor.getId());
+        dto.setFullName(doctor.getFullName());
+        dto.setSpecialization(doctor.getSpecialization());
+        if (doctor.getDepartment() != null) {
+            dto.setDepartmentName(
+                    doctor.getDepartment().getDepartmentName()
+            );
+        }
+        dto.setPhone(doctor.getPhone());
+        dto.setEmail(doctor.getEmail());
+        dto.setStatus(doctor.getStatus());
+        return dto;
     }
 }

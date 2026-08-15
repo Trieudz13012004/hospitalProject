@@ -1,11 +1,13 @@
 package com.example.hospitalProject.repository;
 
 import com.example.hospitalProject.entity.Doctor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
@@ -37,5 +39,10 @@ public interface DoctorRepo extends JpaRepository<Doctor, Integer> {
             @Param("keyword") String keyword,
             @Param("departmentId") Integer departmentId,
             @Param("status") String status
+    );
+
+    Page<Doctor> findBySpecialization(
+            String specialization,
+            Pageable pageable
     );
 }
