@@ -4,21 +4,18 @@ import java.time.LocalDateTime;
 
 public class InvoiceResponseDTO {
     private int invoiceId;
-
     private String invoiceCode;
 
     private String appointmentCode;
 
-    private String patientName;
-
     private String patientCode;
+    private int patientId;
+    private String patientName;
 
     private LocalDateTime issueDate;
 
     private double examinationFee;
-
     private double medicineFee;
-
     private double totalAmount;
 
     private String paymentStatus;
@@ -26,12 +23,13 @@ public class InvoiceResponseDTO {
     public InvoiceResponseDTO() {
     }
 
-    public InvoiceResponseDTO(int invoiceId, String invoiceCode, String appointmentCode, String patientName, String patientCode, LocalDateTime issueDate, double examinationFee, double medicineFee, double totalAmount, String paymentStatus) {
+    public InvoiceResponseDTO(int invoiceId, String invoiceCode, String appointmentCode, String patientCode, int patientId, String patientName, LocalDateTime issueDate, double examinationFee, double medicineFee, double totalAmount, String paymentStatus) {
         this.invoiceId = invoiceId;
         this.invoiceCode = invoiceCode;
         this.appointmentCode = appointmentCode;
-        this.patientName = patientName;
         this.patientCode = patientCode;
+        this.patientId = patientId;
+        this.patientName = patientName;
         this.issueDate = issueDate;
         this.examinationFee = examinationFee;
         this.medicineFee = medicineFee;
@@ -63,20 +61,28 @@ public class InvoiceResponseDTO {
         this.appointmentCode = appointmentCode;
     }
 
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
-
     public String getPatientCode() {
         return patientCode;
     }
 
     public void setPatientCode(String patientCode) {
         this.patientCode = patientCode;
+    }
+
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
     public LocalDateTime getIssueDate() {
