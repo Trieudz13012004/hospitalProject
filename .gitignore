@@ -33,8 +33,5 @@ build/
 ### VS Code ###
 .vscode/
 
-## deploy backend ##
-.\mvnw.cmd clean package
-java -jar target/hospitalProject-0.0.1-SNAPSHOT.jar
 
 

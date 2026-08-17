@@ -6,10 +6,10 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN .\mvnw.cmd clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Stage 2: Run
-FROM eclipse-temurin:25-jre
+FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
